@@ -32,7 +32,7 @@ spec:
     spec:
       containers:
       - name: test-api
-        image: 711391695265.dkr.ecr.us-east-2.amazonaws.com/harsunny-test-api
+        image: 711391695265.dkr.ecr.us-east-2.amazonaws.com/harsunny-test-api:IMAGETAG
         ports:
         - containerPort: 80
         resources:
