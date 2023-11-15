@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-api
+  namespace: sunny-test-harshil
+  labels:
+    app: test-api
+spec:
+  selector:
+    app: test-api
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5001
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-api-deployment
+  namespace: sunny-test-harshil
+  labels:
+    app: test-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-api
+  template:
+    metadata:
+      labels:
+        app: test-api
+    spec:
+      containers:
+      - name: test-api
+        image: 711391695265.dkr.ecr.us-east-2.amazonaws.com/harsunny-test-api
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: "0.5Gi"
+            cpu: "0.5"
+          limits:
+            memory: "2Gi"
+            cpu: "2"
